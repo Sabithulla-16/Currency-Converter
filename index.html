@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Currency Converter</title>
+  <meta name="description"
+  content="Smart Currency Converter helps you convert currencies instantly using real-time exchange rates. Fast, accurate, and easy to use worldwide." />
+  <meta name="keywords"
+  content="currency converter, exchange rates, money converter, real time currency, forex calculator" />
+  <meta name="author" content="Smart Currency Converter" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#2b59ff" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="app">
+    <div class="card">
+
+      <header class="header">
+        <h1 class="app-title">Smart Currency Converter</h1>
+        <p class="app-subtitle">Instant, accurate exchange rates — worldwide</p>
+      </header>
+
+      <section class="section input-section">
+        <label>Amount</label>
+        <input type="text" id="amount" inputmode="decimal" placeholder="Enter amount" />
+      </section>
+
+      <section class="section currency-section from">
+        <label>From</label>
+        <select id="fromCurrency"></select>
+      </section>
+
+      <div class="swap-inline">
+	<button id="swapBtn" title="Swap currencies">⇅</button>
+      </div>
+
+      <section class="section currency-section to">
+        <label>To</label>
+        <select id="toCurrency"></select>
+      </section>
+
+      <section class="section result-section">
+        <label>Converted Amount</label>
+        <div id="result">—</div>
+        <div id="rateInfo" class="rate-info"></div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Real loading overlay -->
+  <div id="loader">
+    <div class="loader-content">
+      <div class="spinner"></div>
+      <p>Loading currencies…</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
