@@ -135,7 +135,7 @@ function countryCodeToFlag(countryCode) {
 // Load currencies dynamically
 async function loadCurrencies() {
   try {
-    loader.style.display = "flex"; // show while loading
+    loader.classList.add("active"); // show while loading
 
     const res = await fetch("https://api.frankfurter.app/currencies");
     currencies = await res.json();
@@ -160,17 +160,15 @@ async function loadCurrencies() {
     console.error(err);
     alert("Failed to load currencies. Please refresh.");
   } finally {
-    loader.style.display = "none";
+    loader.classList.remove("active");
     await preCacheBaseRates();
     restoreUserState();
   }
 }
 
-if ("requestIdleCallback" in window) {
-  requestIdleCallback(loadCurrencies);
-} else {
-  setTimeout(loadCurrencies, 0);
-}
+requestIdleCallback
+  ? requestIdleCallback(loadCurrencies)
+  : setTimeout(loadCurrencies, 0);
 
 function formatWithCommas(input) {
   const start = input.selectionStart;
