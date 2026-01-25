@@ -60,6 +60,7 @@ To install as an app:
 3️⃣ The app will be added to your device like a native application  
 
 ## 📁 Project Structure
+```
 Currency-Converter/
 ├── index.html
 ├── style.css
@@ -70,6 +71,7 @@ Currency-Converter/
 ├── icon-512.png
 ├── favicon.ico
 └── README.md
+```
 
 ## 🔗 API Used
 Frankfurter Exchange Rates API  
