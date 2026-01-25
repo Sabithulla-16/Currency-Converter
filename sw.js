@@ -3,14 +3,14 @@ const STATIC_CACHE = "static-v2";
 const API_CACHE = "api-v1";
 
 const STATIC_ASSETS = [
-  "/",
-  "/index.html",
-  "/style.css",
-  "/script.js",
-  "/manifest.json",
-  "/icon-192.png",
-  "/icon-512.png",
-  "/favicon.ico"
+  "/.",
+  "/.index.html",
+  "/.style.css",
+  "/.script.js",
+  "/.manifest.json",
+  "/.icon-192.png",
+  "/.icon-512.png",
+  "/.favicon.ico"
 ];
 
 // =======================
@@ -19,7 +19,7 @@ const STATIC_ASSETS = [
 self.addEventListener("install", event => {
   event.waitUntil(
     caches.open(STATIC_CACHE).then(cache =>
-      cache.addAll(STATIC_ASSETS)
+      return cache.addAll(STATIC_ASSETS)
     )
   );
   self.skipWaiting();
@@ -78,3 +78,4 @@ self.addEventListener("fetch", event => {
     )
   );
 });
+
