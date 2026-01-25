@@ -158,7 +158,8 @@ async function loadCurrencies() {
     console.error(err);
     alert("Failed to load currencies. Please refresh.");
   } finally {
-    loader.style.display = "none"; // hide immediately when done
+    loader.style.display = "none";
+    await preCacheBaseRates();
     restoreUserState();
   }
 }
@@ -244,12 +245,77 @@ function stopConvertingAnimation() {
   }
 }
 
+async function preCacheBaseRates() {
+  if (!navigator.onLine) return;
+
+  try {
+    const res = await fetch("https://api.frankfurter.app/latest");
+    const data = await res.json();
+
+    Object.entries(data.rates).forEach(([currency, rate]) => {
+      rateCache[`EUR-${currency}`] = {
+        rate,
+        time: Date.now()
+      };
+      rateCache[`${currency}-EUR`] = {
+        rate: 1 / rate,
+        time: Date.now()
+      };
+    });
+
+    localStorage.setItem("rateCache", JSON.stringify(rateCache));
+  } catch (e) {
+    console.warn("Base rate pre-cache failed");
+  }
+}
+
 async function convertCurrency() {
   const amount = parseFloat(amountInput.value.replace(/,/g, ""));
   const from = fromSelect.value;
   const to = toSelect.value;
   const cacheKey = `${from}-${to}`;
   const now = Date.now();
+
+  // =======================
+  // OFFLINE MODE HANDLING
+  // =======================
+  if (!navigator.onLine) {
+    stopConvertingAnimation();
+
+    // Same currency → instant
+    if (from === to) {
+      resultDiv.innerText = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: to
+      }).format(amount);
+
+      rateInfo.innerText = "Offline • same currency";
+      return;
+    }
+
+    const eurFrom = rateCache[`${from}-EUR`];
+    const eurTo = rateCache[`EUR-${to}`];
+
+    if (eurFrom && eurTo) {
+      const rate = eurFrom.rate * eurTo.rate;
+      const value = amount * rate;
+
+      resultDiv.innerText = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: to,
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }).format(value);
+
+      rateInfo.innerText =
+        `Offline • cached rate (1 ${from} ≈ ${rate.toFixed(4)} ${to})`;
+      return;
+    }
+
+    resultDiv.innerText = "Offline – no cached rate available";
+    rateInfo.innerText = "Connect once to cache rates";
+    return;
+  }
 
   if (!amount || amount <= 0) {
     stopConvertingAnimation();
