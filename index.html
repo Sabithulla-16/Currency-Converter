@@ -26,27 +26,27 @@
       </header>
 
       <section class="section input-section">
-        <label>Amount</label>
+        <label for="amount" >Amount</label>
         <input type="text" id="amount" inputmode="decimal" placeholder="Enter amount" />
       </section>
 
       <section class="section currency-section from">
-        <label>From</label>
+        <label for="fromCurrency">From</label>
         <select id="fromCurrency"></select>
       </section>
 
       <div class="swap-inline">
-	<button id="swapBtn" title="Swap currencies">⇅</button>
+	<button id="swapBtn" aria-label="Swap currencies" title="Swap currencies">⇅</button>
       </div>
 
       <section class="section currency-section to">
-        <label>To</label>
+        <label for="toCurrency">To</label>
         <select id="toCurrency"></select>
       </section>
 
       <section class="section result-section">
         <label>Converted Amount</label>
-        <div id="result">—</div>
+        <div id="result" aria-live="polite">—</div>
         <div id="rateInfo" class="rate-info"></div>
       </section>
 
@@ -54,14 +54,13 @@
   </div>
 
   <!-- Real loading overlay -->
-  <div id="loader">
+  <div id="loader" role="status" aria-live="assertive" aria-hidden="true">
     <div class="loader-content">
       <div class="spinner"></div>
       <p>Loading currencies…</p>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
-
 </html>
