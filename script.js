@@ -140,18 +140,20 @@ async function loadCurrencies() {
     const res = await fetch("https://api.frankfurter.app/currencies");
     currencies = await res.json();
 
+    let optionsHTML = "";
+
     Object.entries(currencies).forEach(([code, name]) => {
       const countryCode = currencyToCountry[code];
       const flag = (!isWindows && countryCode)
         ? countryCodeToFlag(countryCode)
         : "";
 
-      const option = `<option value="${code}">
+      optionsHTML = `<option value="${code}">
         ${flag ? flag + " " : ""}${name} (${code})
       </option>`;
 
-      fromSelect.innerHTML += option;
-      toSelect.innerHTML += option;
+      fromSelect.innerHTML += optionsHTML;
+      toSelect.innerHTML += optionsHTML;
     });
 
   } catch (err) {
@@ -164,7 +166,11 @@ async function loadCurrencies() {
   }
 }
 
-loadCurrencies();
+if ("requestIdleCallback" in window) {
+  requestIdleCallback(loadCurrencies);
+} else {
+  setTimeout(loadCurrencies, 0);
+}
 
 function formatWithCommas(input) {
   const start = input.selectionStart;
@@ -463,8 +469,14 @@ async function convertCurrency() {
 // =======================
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker
-      .register("./sw.js")
-      .catch(err => console.error("SW registration failed", err));
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(() =>
+        navigator.serviceWorker.register("./sw.js")
+      );
+    } else {
+      setTimeout(() =>
+        navigator.serviceWorker.register("./sw.js"), 0
+      );
+    }
   });
 }
