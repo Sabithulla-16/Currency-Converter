@@ -30,6 +30,8 @@ body {
   margin: auto;
   background: #ffffff;
   border-radius: 16px;
+  content-visibility: auto;
+  contain-intrinsic-size: 600px;
   box-shadow: 0 18px 32px rgba(0,0,0,0.22);
   overflow: hidden;
 }
@@ -151,8 +153,15 @@ select:focus,
   display: flex;
   align-items: center;
   justify-content: center;
-  will-change: opacity;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
   z-index: 9999;
+}
+
+#loader.active {
+  opacity: 1;
+  pointer-events: all;
 }
 
 /* Loader content */
@@ -215,4 +224,11 @@ input[type="number"] {
 .app-subtitle {
   opacity: 0.85;
   font-size: 0.95rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }
