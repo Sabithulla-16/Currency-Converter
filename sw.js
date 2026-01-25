@@ -18,9 +18,9 @@ const STATIC_ASSETS = [
 // =======================
 self.addEventListener("install", event => {
   event.waitUntil(
-    caches.open(STATIC_CACHE).then(cache =>
-      return cache.addAll(STATIC_ASSETS)
-    )
+    caches.open(STATIC_CACHE).then(cache => {
+      return cache.addAll(STATIC_ASSETS);
+    })
   );
   self.skipWaiting();
 });
@@ -78,4 +78,5 @@ self.addEventListener("fetch", event => {
     )
   );
 });
+
 
