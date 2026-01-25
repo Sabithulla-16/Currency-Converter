@@ -1,6 +1,5 @@
 * {
   box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
 }
 
 body {
@@ -10,7 +9,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  body {
   font-family:
     system-ui,
     -apple-system,
@@ -20,7 +18,6 @@ body {
     "Helvetica Neue",
     Arial,
     sans-serif;
-}
 }
 
 .app {
@@ -33,7 +30,7 @@ body {
   margin: auto;
   background: #ffffff;
   border-radius: 16px;
-  box-shadow: 0 25px 40px rgba(0,0,0,0.25);
+  box-shadow: 0 18px 32px rgba(0,0,0,0.22);
   overflow: hidden;
 }
 
@@ -63,7 +60,7 @@ body {
 .section label {
   font-size: 13px;
   font-weight: 600;
-  color: #444;
+  color: #374151;
 }
 
 input, select {
@@ -87,9 +84,10 @@ select option {
 }
 
 input:focus,
-select:focus {
-  outline: none;
-  border-color: #6366f1;
+select:focus,
+#swapBtn:focus {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
 }
 
 .currency-section.from {
@@ -121,6 +119,7 @@ select:focus {
   cursor: pointer;
   box-shadow: 0 6px 15px rgba(0,0,0,0.2);
   transition: transform 0.4s ease;
+  will-change: transform;
 }
 
 #swapBtn.rotate {
@@ -152,6 +151,7 @@ select:focus {
   display: flex;
   align-items: center;
   justify-content: center;
+  will-change: opacity;
   z-index: 9999;
 }
 
