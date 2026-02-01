@@ -12,7 +12,7 @@ It is built as a **Progressive Web App (PWA)** with offline support and smooth p
 https://smart-currency-conversion.netlify.app/
 
 📲 Android App (APK):  
-https://github.com/Sabithulla-16/YOUR_REPO_NAME/raw/main/apk/SmartCurrencyConverter.apk
+https://github.com/Sabithulla-16/Currency-Converter/raw/main/apk/SmartCurrencyConverter.apk
 
 ---
 
