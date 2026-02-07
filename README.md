@@ -2,7 +2,7 @@
 
 [![🌐 Live App](https://img.shields.io/badge/Live%20App-Open-blue)](https://price-convertor.netlify.app/)
 [![📲 Download APK](https://img.shields.io/badge/Android-Download%20APK-green)](https://github.com/Sabithulla-16/YOUR_REPO_NAME/raw/main/apk/SmartCurrencyConverter.apk)
-[![📦 PWA](https://img.shields.io/badge/PWA-Installable-orange)](https://YOUR_LIVE_LINK_HERE)
+[![📦 PWA](https://img.shields.io/badge/PWA-Installable-orange)](ttps://price-convertor.netlify.app/)
 [![👨‍💻 Developer](https://img.shields.io/badge/Developer-Sabithulla-purple)](https://github.com/Sabithulla-16)
 
 Smart Currency Converter is a **fast, accurate, and user-friendly currency conversion app** that uses **real-time exchange rates**.  
