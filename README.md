@@ -1,6 +1,6 @@
 # 💱 Smart Currency Converter
 
-[![🌐 Live App](https://img.shields.io/badge/Live%20App-Open-blue)](https://YOUR_LIVE_LINK_HERE)
+[![🌐 Live App](https://img.shields.io/badge/Live%20App-Open-blue)](https://price-convertor.netlify.app/)
 [![📲 Download APK](https://img.shields.io/badge/Android-Download%20APK-green)](https://github.com/Sabithulla-16/YOUR_REPO_NAME/raw/main/apk/SmartCurrencyConverter.apk)
 [![📦 PWA](https://img.shields.io/badge/PWA-Installable-orange)](https://YOUR_LIVE_LINK_HERE)
 [![👨‍💻 Developer](https://img.shields.io/badge/Developer-Sabithulla-purple)](https://github.com/Sabithulla-16)
@@ -9,7 +9,7 @@ Smart Currency Converter is a **fast, accurate, and user-friendly currency conve
 It is built as a **Progressive Web App (PWA)** with offline support and smooth performance across devices.
 
 🌐 Live Website:  
-https://smart-currency-conversion.netlify.app/
+https://price-convertor.netlify.app/
 
 📲 Android App (APK):  
 https://github.com/Sabithulla-16/Currency-Converter/raw/main/SmartCurrencyConverter.apk
